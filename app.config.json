@@ -1,0 +1,26 @@
+{
+  "$schema": "./schemas/app-config.schema.json",
+  "name": "QC Workbench",
+  "nameJa": "QC Workbench / QC七つ道具",
+  "slug": "qc-workbench",
+  "version": "1.0.0",
+  "description": "Inspect local quality-control datasets before building Pareto charts, histograms, control charts, and other QC analyses.",
+  "descriptionJa": "現場データを読み込み、QC七つ道具で分析するためのデータ準備ワークスペースです。",
+  "defaultLanguage": "auto",
+  "repository": {
+    "owner": "ttomohisa",
+    "name": "htmlapps-qc-workbench"
+  },
+  "build": {
+    "output": "dist/index.html",
+    "blockRuntimeNetwork": true,
+    "selfExtract": {
+      "enabled": true,
+      "output": "dist/index.self-extract.html"
+    },
+    "sizeBudget": {
+      "readableWarningMb": 25,
+      "selfExtractWarningMb": 12
+    }
+  }
+}
