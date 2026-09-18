@@ -14,6 +14,8 @@ A browser-only QC workspace for loading CSV / TSV data, building common QC chart
 
 GitHub Pages delivers the initial HTML. After it loads, file parsing, type detection, chart calculation, project saving, fishbone editing, and report generation are processed locally on your device. The CSV / TSV data you select is not uploaded by the app.
 
+[![QC Workbench screenshot](assets/screenshot-en.png)](https://ttomohisa.github.io/htmlapps-qc-workbench/)
+
 ## Features
 
 - **Reuse one dataset across QC analyses** — Import once, then build Pareto charts, histograms, trend charts, scatter plots, and control charts from the same local dataset.
