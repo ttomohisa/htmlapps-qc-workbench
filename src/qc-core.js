@@ -772,12 +772,73 @@
 
   function restoreProjectSnapshot(snapshot) {
     if (!snapshot || Number(snapshot.schemaVersion) !== 1) throw new Error('Unsupported project schema version.');
-    if (!snapshot.dataset || !Array.isArray(snapshot.dataset.columns) || !Array.isArray(snapshot.dataset.rows)) throw new Error('Project dataset is missing or invalid.');
+    const isRecord = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+    const fail = () => { throw new Error('Project dataset or settings are missing or invalid.'); };
+    const data = snapshot.dataset;
+    if (!isRecord(data) || !Array.isArray(data.columns) || !data.columns.length || !Array.isArray(data.rows) || !isRecord(data.metadata)) fail();
+    if (typeof data.name !== 'string' || typeof data.source !== 'string') fail();
+    const types = ['number', 'datetime', 'category', 'text'];
+    const columnIds = new Set();
+    for (const column of data.columns) {
+      if (!isRecord(column) || typeof column.id !== 'string' || !column.id || columnIds.has(column.id) || typeof column.name !== 'string' || !types.includes(column.type)) fail();
+      columnIds.add(column.id);
+    }
+    const rowIds = new Set();
+    for (const row of data.rows) {
+      if (!Array.isArray(row) || row.length !== data.columns.length + 1 || !Number.isSafeInteger(row[0]) || rowIds.has(row[0]) || row.slice(1).some(value => typeof value !== 'string')) fail();
+      rowIds.add(row[0]);
+    }
+    if (data.metadata.rowCount !== data.rows.length || data.metadata.columnCount !== data.columns.length) fail();
+    const analysisTypes = ['pareto', 'histogram', 'trend', 'scatter', 'imr', 'xbar-r', 'p-chart', 'np-chart', 'c-chart', 'u-chart'];
+    const analyses = snapshot.analyses ?? [];
+    const fishbones = snapshot.fishbones ?? [];
+    if (!Array.isArray(analyses) || !Array.isArray(fishbones)) fail();
+    const analysisIds = new Set();
+    for (const analysis of analyses) {
+      if (!isRecord(analysis) || typeof analysis.id !== 'string' || !analysis.id || analysisIds.has(analysis.id) || !analysisTypes.includes(analysis.type)) fail();
+      analysisIds.add(analysis.id);
+      for (const key of ['columnId', 'xColumnId', 'yColumnId', 'secondaryColumnId', 'subgroupColumnId', 'sampleSizeColumnId', 'labelColumnId', 'orderColumnId', 'controlOrderColumnId']) {
+        if (analysis[key] && !columnIds.has(analysis[key])) fail();
+      }
+      if (analysis.display != null && (!isRecord(analysis.display) || (analysis.display.labelColumnId && !columnIds.has(analysis.display.labelColumnId)))) fail();
+      if (analysis.filters != null && (!Array.isArray(analysis.filters) || analysis.filters.some(filter => !isRecord(filter) || !columnIds.has(filter.columnId) || typeof filter.operator !== 'string'))) fail();
+      if (analysis.stratification != null && (!isRecord(analysis.stratification) || (analysis.stratification.columnId && !columnIds.has(analysis.stratification.columnId)) || (analysis.stratification.selectedGroups != null && !Array.isArray(analysis.stratification.selectedGroups)))) fail();
+    }
+    const validateCauses = (causes, depth = 1) => {
+      if (!Array.isArray(causes) || (depth > 3 && causes.length)) fail();
+      for (const cause of causes) {
+        if (!isRecord(cause) || typeof cause.id !== 'string' || typeof cause.text !== 'string') fail();
+        validateCauses(cause.children ?? [], depth + 1);
+      }
+    };
+    const fishboneIds = new Set();
+    for (const fishbone of fishbones) {
+      if (!isRecord(fishbone) || typeof fishbone.id !== 'string' || !fishbone.id || fishboneIds.has(fishbone.id) || typeof fishbone.effect !== 'string' || !Array.isArray(fishbone.categories)) fail();
+      fishboneIds.add(fishbone.id);
+      for (const category of fishbone.categories) {
+        if (!isRecord(category) || typeof category.id !== 'string' || typeof category.name !== 'string') fail();
+        validateCauses(category.causes);
+      }
+    }
+    const preferences = snapshot.uiPreferences ?? {};
+    if (!isRecord(preferences)) fail();
+    for (const key of ['reportExcludedAnalysisIds', 'reportExcludedFishboneIds']) {
+      if (preferences[key] != null && (!Array.isArray(preferences[key]) || preferences[key].some(id => typeof id !== 'string'))) fail();
+    }
     const restored = deepCloneJson(snapshot);
-    if (!Array.isArray(restored.analyses)) restored.analyses = [];
-    if (!Array.isArray(restored.fishbones)) restored.fishbones = [];
-    if (!restored.uiPreferences || typeof restored.uiPreferences !== 'object') restored.uiPreferences = {};
+    restored.analyses = deepCloneJson(analyses);
+    restored.fishbones = deepCloneJson(fishbones);
+    restored.uiPreferences = deepCloneJson(preferences);
     return restored;
+  }
+
+  // This is only a download name; it is never used as a filesystem path.
+  function projectFilename(value) {
+    let stem = String(value ?? '').trim().replace(/(?:\.qcw)?\.json$/i, '')
+      .replace(/[<>:"/\\|?*\x00-\x1f\x7f]/g, '_').replace(/^[.\s]+|[.\s]+$/g, '').slice(0, 120).replace(/[.\s]+$/g, '');
+    if (!stem) stem = 'qc-project';
+    if (/^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(stem)) stem = '_' + stem;
+    return stem + '.qcw.json';
   }
 
   function csvField(value) {
@@ -852,6 +913,7 @@
     removeFishboneCause,
     createProjectSnapshot,
     restoreProjectSnapshot,
+    projectFilename,
     datasetToCsv,
     reserveFishboneIds,
     chooseDefaultXAxisColumn,

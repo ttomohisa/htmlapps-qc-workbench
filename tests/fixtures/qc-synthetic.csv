@@ -1,0 +1,7 @@
+order,weight,subgroup,defect,defective_count,sample_size,defects
+1,10,A,Scratch,1,100,2
+2,12,A,Dent,2,100,4
+3,14,B,Scratch,3,100,6
+4,16,B,Scratch,4,100,8
+5,18,C,Dent,5,100,10
+6,20,C,Scratch,6,100,12

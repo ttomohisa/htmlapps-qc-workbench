@@ -110,3 +110,9 @@ Keep source in one HTML while it remains understandable. When an app grows subst
 - No runtime external resource.
 - Clear state ownership.
 - A build that fails on missing input.
+
+## QC Workbench reliability additions (v1.0.1)
+
+File import and project restore share a monotonically increasing source generation. Stale completions and errors are ignored. A valid replacement is parsed/validated before active dataset state is assigned; original byte input is kept for later encoding changes. Invalid replacements preserve the last valid workspace. `QCCore.restoreProjectSnapshot` validates schema-v1 structural invariants before returning a detached copy. Project download names use `QCCore.projectFilename`, never a filesystem path.
+
+The default build also writes `qc-workbench.html` as an exact copy of the verified readable HTML. `scripts/check-repository.ps1` compares SHA-256 values. Custom output builds retain template behavior and do not rewrite the root copy. Standard Cloudflare PR preview/cleanup workflows are adopted from htmlapps-template cb90877; they do not publish the default branch or register the app in any catalog.

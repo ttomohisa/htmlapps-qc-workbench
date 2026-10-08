@@ -3,7 +3,7 @@
   "name": "QC Workbench",
   "nameJa": "QC Workbench / QC七つ道具",
   "slug": "qc-workbench",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Inspect local quality-control datasets before building Pareto charts, histograms, control charts, and other QC analyses.",
   "descriptionJa": "現場データを読み込み、QC七つ道具で分析するためのデータ準備ワークスペースです。",
   "defaultLanguage": "auto",
