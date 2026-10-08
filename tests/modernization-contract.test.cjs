@@ -45,3 +45,8 @@ test('standard Cloudflare preview uses same-repo guards and paired cleanup',()=>
  assert.match(read('.github/workflows/preview-cleanup.yml'),/closed/);
  assert.equal(JSON.parse(read('wrangler.preview.jsonc')).assets.directory,'./dist');
 });
+
+test('header language and Help controls preserve 44-pixel interaction targets',()=>{
+ assert.match(template,/\.language-button\{[^}]*min-width:44px[^}]*min-height:44px/);
+ assert.match(template,/\.header-icon-button\{[^}]*width:44px[^}]*height:44px/);
+});
