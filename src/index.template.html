@@ -40,7 +40,9 @@
     .report-workspace{margin-top:18px;padding:18px 20px}.report-workspace h2{margin:0;font-size:18px}.report-workspace>p{margin:4px 0 14px;color:var(--muted);font-size:12px}.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.report-box{padding:12px;border:1px solid var(--line);border-radius:11px;background:#fbfbf9}.report-box h3{margin:0 0 8px;font-size:13px}.report-select-list{display:grid;gap:6px;max-height:190px;overflow:auto}.report-select-item{display:flex;gap:8px;align-items:flex-start;font-size:11px}.report-select-item input{margin-top:2px;accent-color:var(--accent)}.report-options{display:grid;grid-template-columns:minmax(240px,1fr) auto;gap:10px;align-items:end;margin-top:12px}.report-options .field{min-width:0}.report-check{display:flex;align-items:center;gap:7px;min-height:40px;font-size:11px;font-weight:700}.report-check input{width:17px;height:17px;accent-color:var(--accent)}.report-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.recovery-button[hidden]{display:none}.report-note{margin-top:10px;color:var(--muted);font-size:10px}.project-file-input{display:none}
     @media(max-width:920px){.fishbone-layout{grid-template-columns:190px minmax(0,1fr)}.fishbone-editor{grid-column:1/-1}.column-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.analysis-layout{grid-template-columns:200px minmax(0,1fr)}.analysis-settings{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}.analysis-help{grid-column:1/-1}}
     @media(max-width:620px){.report-grid{grid-template-columns:1fr}.report-options{display:grid}.report-actions{display:grid}.report-actions button{width:100%}.fishbone-layout{display:block}.fishbone-sidebar,.fishbone-preview-card,.fishbone-editor{margin-bottom:10px}.fishbone-preview{min-height:300px}.fishbone-preview>svg{min-width:560px}.cause-actions{display:grid;grid-template-columns:1fr}.cause-actions .secondary-btn{width:100%}.brand-meta{display:none}.header-inner{gap:8px}.brand-name{font-size:15px}.main{padding-top:17px}.intro{display:block}.privacy-pill{width:max-content;margin-top:11px}.import-card{padding:13px}.dropzone{min-height:190px;padding:20px 13px}.dataset-head{display:block;padding:15px}.dataset-actions{margin-top:12px}.summary-grid{padding:0 15px 15px}.settings-strip{padding:13px 15px}.field{min-width:calc(50% - 5px);flex:1}.column-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:3px}.next-card{display:block}.next-card .primary-btn{width:100%;margin-top:12px}.analysis-types{grid-template-columns:1fr}.analysis-layout{display:block}.analysis-sidebar,.analysis-settings{margin-bottom:10px}.analysis-settings{display:grid;grid-template-columns:1fr}.chart-card{min-height:0}.chart-stage{min-height:260px;padding:8px}.chart-stage>svg{min-width:460px}.preview-table th,.preview-table td{padding:8px 9px}.dialog-body{padding:15px}.dialog-actions{padding:12px 15px}.text-btn{padding:7px 8px}}
-    @media(max-width:360px){.brand-name{max-width:160px;overflow:hidden;text-overflow:ellipsis}.version-badge{display:none}.summary-grid{grid-template-columns:1fr 1fr}.summary-item{padding:9px}.field{min-width:100%}.header-actions{gap:3px}.icon-btn{width:35px;height:35px}}
+    #helpDialog[open]{display:flex;flex-direction:column;overflow:hidden;max-height:calc(100dvh - 28px)}#helpDialog .dialog-body{min-height:0;overflow-y:auto;padding-bottom:calc(18px + env(safe-area-inset-bottom))}#helpDialog .dialog-head,#helpDialog .dialog-actions{flex-shrink:0}
+    .filename-control{display:flex;align-items:center;gap:8px}.filename-control input{min-width:0;width:100%}.filename-control span{white-space:nowrap;color:var(--muted);font-size:12px}.project-filename-field{max-width:460px;margin:14px 0}
+    @media(max-width:360px){.brand-name{display:flex;align-items:center;max-width:none;font-size:13px}.brand-name #brandName{overflow:hidden;text-overflow:ellipsis}.version-badge{flex:none}.version-badge{font-size:9px;padding:1px 4px;margin-left:4px}.summary-grid{grid-template-columns:1fr 1fr}.summary-item{padding:9px}.field{min-width:100%}.header-actions{gap:3px}.icon-btn{width:35px;height:35px}}
 
     @media(max-width:920px){.analysis-layout{grid-template-columns:180px minmax(0,1fr)}.analysis-sidebar{top:116px}.analysis-settings-primary{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-builder{grid-template-columns:repeat(2,minmax(0,1fr))}.fishbone-layout{grid-template-columns:180px minmax(0,1fr)}.column-review-head,.column-review-row{grid-template-columns:minmax(150px,1fr) 140px 64px 64px}}
     @media(max-width:700px){.main{padding-bottom:92px}.workflow-nav{position:fixed;left:8px;right:8px;top:auto;bottom:calc(8px + env(safe-area-inset-bottom));z-index:45;margin:0;padding:4px;border-radius:14px;box-shadow:0 12px 34px rgba(0,0,0,.14)}.workflow-nav a{display:grid;gap:1px;min-height:48px;padding:4px 3px;font-size:9px}.workflow-nav svg{width:17px;height:17px;margin:auto}.column-review-head{display:none}.column-review-body{max-height:250px}.column-review-row{grid-template-columns:minmax(0,1fr) 120px auto auto;gap:6px;padding:6px 9px}.column-review-stat{min-width:34px}.column-review-stat span{display:block;font-size:8px;color:var(--muted)}.column-review-name{font-size:11px}.analysis-layout{display:flex;flex-direction:column}.analysis-sidebar{order:1;position:static;width:100%;max-height:none;overflow:visible}.analysis-settings{order:2;width:100%}.chart-card{order:3;width:100%}.analysis-list{display:flex;gap:7px;overflow:auto;padding-bottom:3px}.analysis-card{flex:0 0 176px}.analysis-settings-primary{grid-template-columns:repeat(2,minmax(0,1fr))}.analysis-settings-primary .analysis-help{font-size:10px}.filter-builder{grid-template-columns:1fr 1fr}.chart-stage{min-height:300px}.chart-stage>svg{min-width:520px}.fishbone-layout{display:flex;flex-direction:column}.fishbone-sidebar{position:static;width:100%}.fishbone-list{display:flex;overflow:auto}.fishbone-list-button{flex:0 0 176px}.fishbone-preview-card,.fishbone-editor{width:100%}.fishbone-category-list{grid-template-columns:1fr}.report-grid{grid-template-columns:1fr}.report-options{display:grid}.report-actions{display:grid}.report-actions button{width:100%}.summary-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;padding:0 12px 12px}.summary-item{padding:8px}.summary-item strong{font-size:13px}.dataset-head{padding:13px}.dataset-actions{margin-top:9px}.data-preview-disclosure .table-wrap{max-height:240px}}
@@ -61,7 +63,7 @@
       </div>
       <div class="header-actions">
         <button class="language-button" id="languageButton" type="button" aria-label="Switch language">EN</button>
-        <button class="icon-button header-icon-button" id="helpButton" type="button" aria-label="使い方と注意事項" data-i18n-aria="helpAria">
+        <button class="icon-button header-icon-button" id="helpButton" type="button" aria-label="使い方と注意事項" data-i18n-aria="helpTitle" data-i18n-title="helpTitle" title="使い方と注意事項">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.35 2.35 0 1 1 3.72 1.9c-.92.67-1.52 1.12-1.52 2.1"/><path d="M12 17h.01"/></svg>
         </button>
       </div>
@@ -275,24 +277,27 @@
           <div class="field"><label for="reportTitleInput" data-i18n="reportName">レポート名</label><input id="reportTitleInput" type="text" maxlength="120"></div>
           <label class="report-check"><input id="includeSourceDataCheckbox" type="checkbox"><span data-i18n="includeSourceData">元データCSVを含める</span></label>
         </div>
+        <div class="field project-filename-field"><label for="projectFilenameInput" data-i18n="projectFilename">プロジェクトの保存名</label><div class="filename-control"><input id="projectFilenameInput" type="text" maxlength="120" autocomplete="off" spellcheck="false" aria-describedby="projectFilenameExtension"><span id="projectFilenameExtension">.qcw.json</span></div></div>
         <div class="report-actions"><button class="primary-btn" id="exportReportButton" type="button" data-i18n="exportHtmlReport">HTMLレポートを保存</button><button class="secondary-btn" id="saveProjectReportButton" type="button" data-i18n="saveProject">プロジェクトを保存</button></div>
         <div class="report-note" data-i18n="reportPrivacyNote">元データは既定ではレポートに含めません。含める場合もブラウザ内でHTMLへ埋め込みます。</div>
       </section>
     </section>
   </main>
 
-  <footer><span id="footerName">QC Workbench</span> · v<span id="footerVersion">1.0.0</span> · <span data-i18n="footer">ブラウザ内で処理します</span></footer>
+  <footer><span id="footerName">QC Workbench</span> · v<span id="footerVersion">1.0.1</span> · <span data-i18n="footer">ブラウザ内で処理します</span></footer>
 
   <dialog id="pasteDialog">
-    <div class="dialog-head"><h2 data-i18n="pasteDialogTitle">表を貼り付け</h2><button class="icon-btn" id="closePaste" type="button" aria-label="閉じる">×</button></div>
+    <div class="dialog-head"><h2 data-i18n="pasteDialogTitle">表を貼り付け</h2><button class="icon-btn" id="closePaste" type="button" aria-label="閉じる" data-i18n-aria="close">×</button></div>
     <div class="dialog-body"><p data-i18n="pasteDialogBody">Excelやスプレッドシートでセル範囲をコピーし、ここへ貼り付けてください。</p><textarea id="pasteArea" spellcheck="false" placeholder="date&#9;line&#9;defect&#10;2026-09-01&#9;A&#9;Scratch"></textarea></div>
     <div class="dialog-actions"><button class="secondary-btn" id="cancelPaste" type="button" data-i18n="cancel">キャンセル</button><button class="primary-btn" id="importPaste" type="button" data-i18n="loadTable">この表を読み込む</button></div>
   </dialog>
 
-  <dialog id="helpDialog">
-    <div class="dialog-head"><h2 data-i18n="helpTitle">使い方と注意事項</h2><button class="icon-btn" id="closeHelp" type="button" aria-label="閉じる">×</button></div>
+  <dialog id="helpDialog" aria-labelledby="helpTitle">
+    <div class="dialog-head"><h2 id="helpTitle" data-i18n="helpTitle">使い方と注意事項</h2><button class="icon-btn" id="closeHelp" type="button" aria-label="閉じる" data-i18n-aria="close">×</button></div>
     <div class="dialog-body">
+      <!-- APP:HELP:BEGIN -->
       <ol class="help-list">
+        <li data-i18n="helpImport">文字コードを変更すると元ファイルから読み直します。読み込み設定の変更で分析はリセットされます。</li>
         <li data-i18n="help1">CSV / TSVを開くか、Excelのセル範囲を貼り付けます。</li>
         <li data-i18n="help2">列ごとに数値・日時・カテゴリ・テキストを自動判定します。</li>
         <li data-i18n="help3">判定が違う場合は列一覧から型を変更します。</li>
@@ -301,11 +306,216 @@
         <li data-i18n="helpFishbone">特性要因図では4M / 5M1E / 空白から原因を3階層まで整理できます。</li><li data-i18n="helpProjectReport">.qcw.jsonで作業を保存・再開し、選んだ分析と特性要因図を単一HTMLレポートへまとめられます。</li>
       </ol>
       <div class="help-note" data-i18n="helpPrivacy">読み込んだデータはブラウザ内だけで処理され、外部サーバーへ送信されません。.xlsxの直接読み込みにはまだ対応していません。</div>
+      <!-- APP:HELP:END -->
     </div>
     <div class="dialog-actions"><button class="primary-btn" id="helpOk" type="button" data-i18n="close">閉じる</button></div>
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"><span class="toast-message" id="toastMessage"></span><button class="toast-action" id="toastAction" type="button" hidden></button></div>
+
+<!--
+  Reusable confirmation dialog for htmlapps-template.
+  Copy this block into src/index.template.html and adapt tokens/labels as needed.
+  API: await AppConfirm.ask({ title, message, confirmLabel, cancelLabel, tone })
+-->
+<style>
+  .app-confirm-dialog {
+    width: min(420px, calc(100% - 24px));
+    max-width: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line, #dadbd6);
+    border-radius: 17px;
+    background: var(--surface, #fff);
+    color: var(--text, #20211f);
+    box-shadow: var(--shadow-md, 0 12px 34px rgba(25, 28, 24, .10));
+  }
+  .app-confirm-dialog::backdrop {
+    background: rgba(15, 17, 14, .48);
+    backdrop-filter: blur(3px);
+  }
+  .app-confirm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 18px 13px;
+    border-bottom: 1px solid var(--line, #dadbd6);
+  }
+  .app-confirm-title { margin: 0; font-size: 17px; letter-spacing: -.01em; }
+  .app-confirm-close {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text, #20211f);
+    cursor: pointer;
+  }
+  .app-confirm-close:hover { background: var(--surface-hover, #e9e9e5); }
+  .app-confirm-close svg { width: 19px; height: 19px; }
+  .app-confirm-body { padding: 18px; }
+  .app-confirm-message {
+    margin: 0;
+    color: var(--muted, #666963);
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+  .app-confirm-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .app-confirm-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid var(--line, #dadbd6);
+    border-radius: 11px;
+    background: var(--surface, #fff);
+    color: var(--text, #20211f);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 760;
+    cursor: pointer;
+  }
+  .app-confirm-button:hover {
+    border-color: var(--line-strong, #bfc1ba);
+    background: var(--surface-hover, #e9e9e5);
+  }
+  .app-confirm-button.primary {
+    border-color: var(--accent, #16624f);
+    background: var(--accent, #16624f);
+    color: #fff;
+  }
+  .app-confirm-button.primary:hover {
+    border-color: var(--accent-hover, #0e503f);
+    background: var(--accent-hover, #0e503f);
+  }
+  .app-confirm-button.danger {
+    border-color: var(--danger, #b3261e);
+    background: var(--danger, #b3261e);
+    color: #fff;
+  }
+  .app-confirm-button:focus-visible,
+  .app-confirm-close:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--focus, #4d8bc7) 55%, transparent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 520px) {
+    .app-confirm-dialog {
+      width: 100%;
+      max-width: none;
+      margin: auto 0 0;
+      border-width: 1px 0 0;
+      border-radius: 22px 22px 0 0;
+    }
+    .app-confirm-dialog::backdrop {
+      background: rgba(0, 0, 0, .42);
+      backdrop-filter: blur(2px);
+    }
+    .app-confirm-header { padding: 14px 18px 12px; }
+    .app-confirm-body { padding: 12px 18px calc(env(safe-area-inset-bottom) + 18px); }
+    .app-confirm-message { font-size: 14px; line-height: 1.75; }
+    .app-confirm-actions { grid-template-columns: 1fr; gap: 10px; margin-top: 16px; }
+    .app-confirm-button { min-height: 48px; font-size: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .app-confirm-dialog, .app-confirm-button, .app-confirm-close { transition: none !important; }
+  }
+</style>
+
+<dialog class="app-confirm-dialog" id="appConfirmDialog" aria-labelledby="appConfirmTitle" aria-describedby="appConfirmMessage">
+  <div class="app-confirm-header">
+    <h2 class="app-confirm-title" id="appConfirmTitle">Confirm</h2>
+    <button class="app-confirm-close" id="appConfirmClose" type="button" aria-label="Close" data-i18n-aria="close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6 6 18"/>
+      </svg>
+    </button>
+  </div>
+  <div class="app-confirm-body">
+    <p class="app-confirm-message" id="appConfirmMessage"></p>
+    <div class="app-confirm-actions">
+      <button class="app-confirm-button" id="appConfirmCancel" type="button">Cancel</button>
+      <button class="app-confirm-button primary" id="appConfirmOk" type="button">OK</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    'use strict';
+
+    const dialog = document.getElementById('appConfirmDialog');
+    const title = document.getElementById('appConfirmTitle');
+    const message = document.getElementById('appConfirmMessage');
+    const closeButton = document.getElementById('appConfirmClose');
+    const cancelButton = document.getElementById('appConfirmCancel');
+    const okButton = document.getElementById('appConfirmOk');
+    let resolver = null;
+    let restoreFocus = null;
+
+    function defaults() {
+      const ja = (document.documentElement.lang || navigator.language || '').toLowerCase().startsWith('ja');
+      return ja
+        ? { title: '確認', confirmLabel: '実行する', cancelLabel: 'キャンセル' }
+        : { title: 'Confirm', confirmLabel: 'Continue', cancelLabel: 'Cancel' };
+    }
+
+    function finish(result) {
+      if (!dialog.open) return;
+      const currentResolver = resolver;
+      resolver = null;
+      dialog.close();
+      if (restoreFocus instanceof HTMLElement && restoreFocus.isConnected) restoreFocus.focus({ preventScroll: true });
+      restoreFocus = null;
+      if (currentResolver) currentResolver(result);
+    }
+
+    function ask(options = {}) {
+      if (dialog.open) finish(false);
+      const fallback = defaults();
+      title.textContent = options.title || fallback.title;
+      message.textContent = options.message || '';
+      cancelButton.textContent = options.cancelLabel || fallback.cancelLabel;
+      okButton.textContent = options.confirmLabel || fallback.confirmLabel;
+      okButton.classList.toggle('danger', options.tone === 'danger');
+      okButton.classList.toggle('primary', options.tone !== 'danger');
+      restoreFocus = document.activeElement;
+
+      return new Promise(resolve => {
+        resolver = resolve;
+        dialog.showModal();
+        requestAnimationFrame(() => cancelButton.focus({ preventScroll: true }));
+      });
+    }
+
+    closeButton.addEventListener('click', () => finish(false));
+    cancelButton.addEventListener('click', () => finish(false));
+    okButton.addEventListener('click', () => finish(true));
+    dialog.addEventListener('cancel', event => {
+      event.preventDefault();
+      finish(false);
+    });
+    dialog.addEventListener('click', event => {
+      const rect = dialog.getBoundingClientRect();
+      const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+      if (outside) finish(false);
+    });
+
+    window.AppConfirm = Object.freeze({ ask });
+  })();
+</script>
 
   <script>
 __QC_CORE_JS__
@@ -437,7 +647,11 @@ __QC_CORE_JS__
     Object.assign(translations.en,{navData:'Data',navAnalysis:'Analyze',navCauses:'Causes',navReport:'Report',importSettings:'Import settings',importSettingsHint:'Encoding, delimiter, header',columnName:'Column',columnType:'Type',projectSummary:(a,f)=>`${a} analyses · ${f} fishbones`,filtersNone:'No filters',stratificationNone:'No stratification'});
     Object.assign(translations.ja,{chartDisplayTitle:'グラフ表示',chartLabelColumn:'ラベル列',showDataLabels:'データラベル',showGrid:'グリッド線',showAxisTitles:'軸タイトル',showLegend:'凡例',displayDefault:'標準',displayCustomized:'カスタム',countAxis:'件数',frequencyAxis:'度数',cumulativePercent:'累積割合',rowOrderAxis:'行順',valueAxis:'値',sampleAxis:'サンプル'});
     Object.assign(translations.en,{chartDisplayTitle:'Chart display',chartLabelColumn:'Label column',showDataLabels:'Data labels',showGrid:'Gridlines',showAxisTitles:'Axis titles',showLegend:'Legend',displayDefault:'Standard',displayCustomized:'Customized',countAxis:'Count',frequencyAxis:'Frequency',cumulativePercent:'Cumulative %',rowOrderAxis:'Row order',valueAxis:'Value',sampleAxis:'Sample'});
+    Object.assign(translations.ja,{projectFilename:'プロジェクトの保存名',switchLanguage:'英語に切り替え',helpProjectReport:'.qcw.jsonで作業を保存・再開できます。「レポート」で保存名を編集できます。ブラウザの復元データは消えることがあるため、大切な作業はファイルに保存してください。',helpImport:'文字コードを変更すると元ファイルのバイト列から読み直します。データの置き換えや読み込み設定の変更で分析はリセットされ、処理中のPNG保存は取り消されます。',helpTitle:'使い方と注意事項'});
+    Object.assign(translations.en,{projectFilename:'Project filename',switchLanguage:'Switch to Japanese',helpProjectReport:'Save and reopen .qcw.json projects. Edit the project filename in Report. Browser recovery storage can be cleared, so save important work to a file.',helpImport:'Changing encoding decodes the original file bytes again. Replacing data or changing import settings resets analyses and cancels pending PNG downloads.',helpTitle:'How to use & notes'});
     let language = (()=>{try{return localStorage.getItem(`${APP_CONFIG.slug}:language`)}catch{return null}})() || ((navigator.language||'').toLowerCase().startsWith('ja')?'ja':'en');
+    if(!['ja','en'].includes(language))language=(navigator.language||'').toLowerCase().startsWith('ja')?'ja':'en';
+    let sourceGeneration = 0;
     let dataset = null;
     let rawSource = null;
     let rawSourceName = '';
@@ -469,19 +683,27 @@ __QC_CORE_JS__
     function delimiterLabel(d){return d==='\t'?t('tab'):d===','?t('comma'):d===';'?t('semicolon'):d}
     function applyLanguage(){
       document.documentElement.lang=language;document.title=language==='ja'?APP_CONFIG.nameJa:APP_CONFIG.name;$('#brandName').textContent=language==='ja'?APP_CONFIG.nameJa:APP_CONFIG.name;$('#footerName').textContent=language==='ja'?APP_CONFIG.nameJa:APP_CONFIG.name;
-      document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>el.setAttribute('placeholder',t(el.dataset.i18nPlaceholder)));document.querySelectorAll('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label',t(el.dataset.i18nAria)));
-      $('#languageButton').textContent=language==='ja'?'EN':'日本語'; if(dataset)renderDataset(); renderAnalyses(); if(dataset)renderReportWorkspace();
+      document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>el.setAttribute('placeholder',t(el.dataset.i18nPlaceholder)));document.querySelectorAll('[data-i18n-title]').forEach(el=>el.setAttribute('title',t(el.dataset.i18nTitle)));document.querySelectorAll('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label',t(el.dataset.i18nAria)));
+      $('#languageButton').textContent=language==='ja'?'EN':'JA';$('#languageButton').setAttribute('aria-label',t('switchLanguage'));$('#languageButton').setAttribute('title',t('switchLanguage')); if(dataset)renderDataset(); renderAnalyses(); if(dataset)renderReportWorkspace();
     }
-    function parseText(text,name,source,encoding='utf-8'){
+    // Every new source invalidates older file reads, including their errors and loaders.
+    function beginSourceChange(){sourceGeneration+=1;setLoading(false);return sourceGeneration}
+    function parseText(text,name,source,encoding='utf-8',sourceBytes=null){
+      beginSourceChange();
       const manualDelimiter=$('#delimiterSelect').value;const delimiter=manualDelimiter==='auto'?CORE.detectDelimiter(text):(manualDelimiter==='tab'?'\t':manualDelimiter);const rows=CORE.parseDelimited(text,delimiter);if(!rows.length||rows.every(r=>r.every(v=>!String(v).trim())))throw new Error(t('emptyError'));
-      detectedDelimiter=delimiter;detectedEncoding=encoding;dataset=CORE.createDataset(rows,{name,source,hasHeader:$('#headerCheckbox').checked});analyses=[];fishbones=[];activeAnalysisId=null;activeFishboneId=null;reportExcludedAnalysisIds.clear();reportExcludedFishboneIds.clear();rawSource=text;rawSourceName=name;rawSourceKind=source;renderDataset();toast(t('loaded'));
+      const nextDataset=CORE.createDataset(rows,{name,source,hasHeader:$('#headerCheckbox').checked});
+      if(!nextDataset.rows.length)throw new Error(t('emptyError'));
+      detectedDelimiter=delimiter;detectedEncoding=encoding;dataset=nextDataset;analyses=[];fishbones=[];activeAnalysisId=null;activeFishboneId=null;reportExcludedAnalysisIds.clear();reportExcludedFishboneIds.clear();
+      rawSource=sourceBytes||text;rawSourceName=name;rawSourceKind=source;
+      $('#projectFilenameInput').value=CORE.projectFilename(name.replace(/\.[^.]+$/,'')).replace(/\.qcw\.json$/,'');
+      clearError();renderDataset();toast(t('loaded'));
     }
-    function decodeAndParse(bytes,name,source){const forced=$('#encodingSelect').value;const decoded=CORE.decodeBytes(bytes,forced==='auto'?undefined:forced);parseText(decoded.text,name,source,decoded.encoding)}
+    function decodeAndParse(bytes,name,source){const forced=$('#encodingSelect').value;const decoded=CORE.decodeBytes(bytes,forced==='auto'?undefined:forced);parseText(decoded.text,name,source,decoded.encoding,bytes)}
     async function loadFile(file){
-      if(!file)return; if(!/\.(csv|tsv|txt)$/i.test(file.name)){showError(t('unsupported'));return} setLoading(true);
-      try{const bytes=new Uint8Array(await file.arrayBuffer());rawSource=bytes;rawSourceName=file.name;rawSourceKind='file';decodeAndParse(bytes,file.name,'file')}catch(err){showError(err?.message||String(err))}finally{setLoading(false)}
+      if(!file)return;const generation=beginSourceChange();if(!/\.(csv|tsv|txt)$/i.test(file.name)){showError(t('unsupported'));return}setLoading(true);
+      try{const bytes=new Uint8Array(await file.arrayBuffer());if(generation!==sourceGeneration)return;try{decodeAndParse(bytes,file.name,'file')}catch(err){showError(err?.message||String(err))}}catch(err){if(generation===sourceGeneration)showError(err?.message||String(err))}finally{if(generation===sourceGeneration)setLoading(false)}
     }
-    function reparse(){if(rawSource==null)return;try{if(rawSource instanceof Uint8Array)decodeAndParse(rawSource,rawSourceName,rawSourceKind);else parseText(rawSource,rawSourceName,rawSourceKind,detectedEncoding)}catch(err){showError(err?.message||String(err))}}
+    function reparse(){if(rawSource==null)return;const filename=$('#projectFilenameInput').value;try{if(rawSource instanceof Uint8Array)decodeAndParse(rawSource,rawSourceName,rawSourceKind);else parseText(rawSource,rawSourceName,rawSourceKind,detectedEncoding);$('#projectFilenameInput').value=filename}catch(err){showError(err?.message||String(err))}}
     function renderDataset(){
       if(!dataset)return;$('#workspace').classList.add('show');$('#datasetName').textContent=dataset.name;const sourceKey=dataset.source==='sample'?'sourceSample':dataset.source==='paste'?'sourcePaste':'sourceFile';$('#datasetSource').textContent=t(sourceKey);$('#rowCount').textContent=nf().format(dataset.metadata.rowCount);$('#columnCount').textContent=nf().format(dataset.metadata.columnCount);$('#encodingValue').textContent=dataset.source==='paste'||dataset.source==='sample'?'UTF-8':detectedEncoding.toUpperCase();$('#delimiterValue').textContent=delimiterLabel(detectedDelimiter);
       renderColumns();renderPreview();renderAnalyses();renderFishbones();renderReportWorkspace();scheduleRecoverySave();
@@ -627,23 +849,28 @@ __QC_CORE_JS__
     function slugifyFile(value){const clean=String(value||'analysis').trim().replace(/[\\/:*?"<>|]+/g,'-').replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,80);return clean||'analysis'}
     function downloadBlob(blob,name){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
     function saveSvg(){const analysis=activeAnalysis();if(!analysis||!currentSvg)return;downloadBlob(new Blob([currentSvg],{type:'image/svg+xml;charset=utf-8'}),`${slugifyFile(analysis.title)}.svg`);toast(t('savedSvg'))}
-    async function savePng(){const analysis=activeAnalysis();if(!analysis||!currentSvg)return;const blob=new Blob([currentSvg],{type:'image/svg+xml'}),url=URL.createObjectURL(blob);try{const img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});const viewBox=currentSvg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/),vw=viewBox?Number(viewBox[1]):900,vh=viewBox?Number(viewBox[2]):420;const canvas=document.createElement('canvas');canvas.width=1800;canvas.height=Math.max(840,Math.round(canvas.width*vh/vw));const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);const png=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(png){downloadBlob(png,`${slugifyFile(analysis.title)}.png`);toast(t('savedPng'))}}finally{URL.revokeObjectURL(url)}}
+    async function savePng(){const analysis=activeAnalysis();if(!analysis||!currentSvg)return;const generation=sourceGeneration,svg=currentSvg,filename=`${slugifyFile(analysis.title)}.png`;const blob=new Blob([svg],{type:'image/svg+xml'}),url=URL.createObjectURL(blob);try{const img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});if(generation!==sourceGeneration)return;const viewBox=svg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/),vw=viewBox?Number(viewBox[1]):900,vh=viewBox?Number(viewBox[2]):420;const canvas=document.createElement('canvas');canvas.width=1800;canvas.height=Math.max(840,Math.round(canvas.width*vh/vw));const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);const png=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(png&&generation===sourceGeneration){downloadBlob(png,filename);toast(t('savedPng'))}}finally{URL.revokeObjectURL(url)}}
     function saveFishboneSvg(){const fishbone=activeFishbone();if(!fishbone||!currentFishboneSvg)return;downloadBlob(new Blob([currentFishboneSvg],{type:'image/svg+xml;charset=utf-8'}),`${slugifyFile(fishbone.effect||'fishbone')}.svg`);toast(t('fishboneSavedSvg'))}
-    async function saveFishbonePng(){const fishbone=activeFishbone();if(!fishbone||!currentFishboneSvg)return;const blob=new Blob([currentFishboneSvg],{type:'image/svg+xml'}),url=URL.createObjectURL(blob);try{const img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});const canvas=document.createElement('canvas');canvas.width=2000;canvas.height=1280;const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);const png=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(png){downloadBlob(png,`${slugifyFile(fishbone.effect||'fishbone')}.png`);toast(t('fishboneSavedPng'))}}finally{URL.revokeObjectURL(url)}}
+    async function saveFishbonePng(){const fishbone=activeFishbone();if(!fishbone||!currentFishboneSvg)return;const generation=sourceGeneration,filename=`${slugifyFile(fishbone.effect||'fishbone')}.png`;const blob=new Blob([currentFishboneSvg],{type:'image/svg+xml'}),url=URL.createObjectURL(blob);try{const img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});if(generation!==sourceGeneration)return;const canvas=document.createElement('canvas');canvas.width=2000;canvas.height=1280;const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);const png=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(png&&generation===sourceGeneration){downloadBlob(png,filename);toast(t('fishboneSavedPng'))}}finally{URL.revokeObjectURL(url)}}
 
     function currentProjectSnapshot(){
       if(!dataset)return null;
-      return CORE.createProjectSnapshot({appVersion:APP_CONFIG.version,dataset,analyses,fishbones,uiPreferences:{language,reportExcludedAnalysisIds:[...reportExcludedAnalysisIds],reportExcludedFishboneIds:[...reportExcludedFishboneIds],reportTitle:$('#reportTitleInput')?.value||'',includeSourceData:Boolean($('#includeSourceDataCheckbox')?.checked)}})
+      return CORE.createProjectSnapshot({appVersion:APP_CONFIG.version,dataset,analyses,fishbones,uiPreferences:{language,projectFilename:$('#projectFilenameInput').value,reportExcludedAnalysisIds:[...reportExcludedAnalysisIds],reportExcludedFishboneIds:[...reportExcludedFishboneIds],reportTitle:$('#reportTitleInput')?.value||'',includeSourceData:Boolean($('#includeSourceDataCheckbox')?.checked)}})
     }
     function syncSequencesAfterRestore(){
       analysisSeq=Math.max(0,...analyses.map(item=>{const m=/^analysis-(\d+)$/.exec(String(item?.id||''));return m?Number(m[1]):0}));
       CORE.reserveFishboneIds(fishbones);
     }
     function applyProjectSnapshot(snapshot,{fromRecovery=false}={}){
-      const restored=CORE.restoreProjectSnapshot(snapshot);dataset=restored.dataset;analyses=restored.analyses||[];fishbones=restored.fishbones||[];if(restored.uiPreferences?.language==='ja'||restored.uiPreferences?.language==='en')language=restored.uiPreferences.language;reportExcludedAnalysisIds.clear();for(const id of restored.uiPreferences?.reportExcludedAnalysisIds||[])reportExcludedAnalysisIds.add(String(id));reportExcludedFishboneIds.clear();for(const id of restored.uiPreferences?.reportExcludedFishboneIds||[])reportExcludedFishboneIds.add(String(id));activeAnalysisId=analyses[0]?.id||null;activeFishboneId=fishbones[0]?.id||null;rawSource=null;rawSourceName=dataset.name||'project';rawSourceKind='project';detectedEncoding='utf-8';detectedDelimiter=',';syncSequencesAfterRestore();applyLanguage();renderDataset();if(restored.uiPreferences?.reportTitle)$('#reportTitleInput').value=restored.uiPreferences.reportTitle;$('#includeSourceDataCheckbox').checked=Boolean(restored.uiPreferences?.includeSourceData);renderReportWorkspace();$('#restoreSessionButton').hidden=true;toast(t(fromRecovery?'recoveryRestored':'projectLoaded'));scheduleRecoverySave();
+      const restored=CORE.restoreProjectSnapshot(snapshot);beginSourceChange();clearError();dataset=restored.dataset;analyses=restored.analyses||[];fishbones=restored.fishbones||[];if(restored.uiPreferences?.language==='ja'||restored.uiPreferences?.language==='en')language=restored.uiPreferences.language;reportExcludedAnalysisIds.clear();for(const id of restored.uiPreferences?.reportExcludedAnalysisIds||[])reportExcludedAnalysisIds.add(String(id));reportExcludedFishboneIds.clear();for(const id of restored.uiPreferences?.reportExcludedFishboneIds||[])reportExcludedFishboneIds.add(String(id));activeAnalysisId=analyses[0]?.id||null;activeFishboneId=fishbones[0]?.id||null;rawSource=null;rawSourceName=dataset.name||'project';rawSourceKind='project';detectedEncoding='utf-8';detectedDelimiter=',';syncSequencesAfterRestore();$('#projectFilenameInput').value=CORE.projectFilename(typeof restored.uiPreferences?.projectFilename==='string'?restored.uiPreferences.projectFilename:(dataset.name||'qc-project').replace(/\.[^.]+$/,'')).replace(/\.qcw\.json$/,'');applyLanguage();renderDataset();if(restored.uiPreferences?.reportTitle)$('#reportTitleInput').value=restored.uiPreferences.reportTitle;$('#includeSourceDataCheckbox').checked=Boolean(restored.uiPreferences?.includeSourceData);renderReportWorkspace();$('#restoreSessionButton').hidden=true;toast(t(fromRecovery?'recoveryRestored':'projectLoaded'));scheduleRecoverySave();
     }
-    function saveProject(){const snapshot=currentProjectSnapshot();if(!snapshot)return;const name=`${slugifyFile((dataset.name||'qc-project').replace(/\.[^.]+$/,''))}.qcw.json`;downloadBlob(new Blob([JSON.stringify(snapshot,null,2)],{type:'application/json;charset=utf-8'}),name);toast(t('projectSaved'))}
-    async function loadProjectFile(file){if(!file)return;if(dataset&&!window.confirm(t('confirmOpenProject')))return;setLoading(true);try{const text=await file.text();applyProjectSnapshot(JSON.parse(text))}catch(err){showError(t('projectLoadError')+' '+(err?.message||String(err)))}finally{setLoading(false)}}
+    function saveProject(){if(!dataset)return;const name=CORE.projectFilename($('#projectFilenameInput').value);$('#projectFilenameInput').value=name.replace(/\.qcw\.json$/,'');const snapshot=currentProjectSnapshot();downloadBlob(new Blob([JSON.stringify(snapshot,null,2)],{type:'application/json;charset=utf-8'}),name);toast(t('projectSaved'))}
+    async function loadProjectFile(file){
+      if(!file)return;const generation=beginSourceChange();
+      if(dataset&&!await window.AppConfirm.ask({title:t('openProject'),message:t('confirmOpenProject'),confirmLabel:t('openProject'),cancelLabel:t('cancel'),tone:'danger'}))return;
+      if(generation!==sourceGeneration)return;setLoading(true);
+      try{const text=await file.text();if(generation!==sourceGeneration)return;applyProjectSnapshot(JSON.parse(text))}catch(err){if(generation===sourceGeneration)showError(t('projectLoadError')+' '+(err?.message||String(err)))}finally{if(generation===sourceGeneration)setLoading(false)}
+    }
     function openRecoveryDb(){return new Promise((resolve,reject)=>{if(!('indexedDB'in window)){resolve(null);return}const request=indexedDB.open('qc-workbench-recovery',1);request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains('state'))db.createObjectStore('state')};request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error)})}
     async function writeRecoverySnapshot(){if(!dataset)return;try{const db=await openRecoveryDb();if(!db)return;const tx=db.transaction('state','readwrite');tx.objectStore('state').put(currentProjectSnapshot(),'current');await new Promise((resolve,reject)=>{tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)});db.close()}catch{}}
     function scheduleRecoverySave(){clearTimeout(recoveryTimer);if(!dataset)return;recoveryTimer=window.setTimeout(writeRecoverySnapshot,350)}
@@ -672,8 +899,8 @@ __QC_CORE_JS__
     const fileInput=$('#fileInput');const dropzone=$('#dropzone');
     $('#fileButton').addEventListener('click',e=>{e.stopPropagation();fileInput.click()});$('#replaceButton').addEventListener('click',()=>fileInput.click());fileInput.addEventListener('change',()=>{loadFile(fileInput.files?.[0]);fileInput.value='' });
     dropzone.addEventListener('click',e=>{if(e.target.closest('button'))return;fileInput.click()});dropzone.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('button')){e.preventDefault();fileInput.click()}});['dragenter','dragover'].forEach(type=>dropzone.addEventListener(type,e=>{e.preventDefault();dropzone.classList.add('is-drag')}));['dragleave','drop'].forEach(type=>dropzone.addEventListener(type,e=>{e.preventDefault();dropzone.classList.remove('is-drag')}));dropzone.addEventListener('drop',e=>loadFile(e.dataTransfer?.files?.[0]));
-    const pasteDialog=$('#pasteDialog');function openPaste(){pasteDialog.showModal();setTimeout(()=>$('#pasteArea').focus(),0)}$('#pasteButton').addEventListener('click',e=>{e.stopPropagation();openPaste()});$('#pasteAgainButton').addEventListener('click',openPaste);$('#closePaste').addEventListener('click',()=>pasteDialog.close());$('#cancelPaste').addEventListener('click',()=>pasteDialog.close());$('#importPaste').addEventListener('click',()=>{const text=$('#pasteArea').value;if(!text.trim()){showError(t('emptyError'));return}try{rawSource=text;rawSourceName=language==='ja'?'貼り付けた表':'Pasted table';rawSourceKind='paste';$('#delimiterSelect').value='auto';parseText(text,rawSourceName,'paste','utf-8');pasteDialog.close()}catch(err){showError(err?.message||String(err))}});
-    $('#sampleButton').addEventListener('click',e=>{e.stopPropagation();rawSource=sample;rawSourceName=t('sampleName');rawSourceKind='sample';$('#encodingSelect').value='auto';$('#delimiterSelect').value='auto';$('#headerCheckbox').checked=true;parseText(sample,rawSourceName,'sample','utf-8')});
+    const pasteDialog=$('#pasteDialog');function openPaste(){pasteDialog.showModal();setTimeout(()=>$('#pasteArea').focus(),0)}$('#pasteButton').addEventListener('click',e=>{e.stopPropagation();openPaste()});$('#pasteAgainButton').addEventListener('click',openPaste);$('#closePaste').addEventListener('click',()=>pasteDialog.close());$('#cancelPaste').addEventListener('click',()=>pasteDialog.close());$('#importPaste').addEventListener('click',()=>{const text=$('#pasteArea').value;if(!text.trim()){showError(t('emptyError'));return}try{$('#delimiterSelect').value='auto';parseText(text,language==='ja'?'貼り付けた表':'Pasted table','paste','utf-8');pasteDialog.close()}catch(err){showError(err?.message||String(err))}});
+    $('#sampleButton').addEventListener('click',e=>{e.stopPropagation();$('#encodingSelect').value='auto';$('#delimiterSelect').value='auto';$('#headerCheckbox').checked=true;parseText(sample,t('sampleName'),'sample','utf-8')});
     $('#encodingSelect').addEventListener('change',reparse);$('#delimiterSelect').addEventListener('change',reparse);$('#headerCheckbox').addEventListener('change',reparse);
     $('#languageButton').addEventListener('click',()=>{language=language==='ja'?'en':'ja';try{localStorage.setItem(`${APP_CONFIG.slug}:language`,language)}catch{}applyLanguage()});
     const helpDialog=$('#helpDialog');$('#helpButton').addEventListener('click',()=>helpDialog.showModal());$('#closeHelp').addEventListener('click',()=>helpDialog.close());$('#helpOk').addEventListener('click',()=>helpDialog.close());
@@ -704,7 +931,7 @@ __QC_CORE_JS__
     $('#deleteFishboneButton').addEventListener('click',()=>{const fishbone=activeFishbone();if(!fishbone||!window.confirm(t('confirmDeleteFishbone')))return;const index=fishbones.findIndex(item=>item.id===fishbone.id);fishbones.splice(index,1);activeFishboneId=fishbones[Math.max(0,index-1)]?.id||fishbones[0]?.id||null;renderFishbones();toast(t('fishboneDeleted'))});
     $('#saveFishboneSvgButton').addEventListener('click',saveFishboneSvg);
     $('#saveFishbonePngButton').addEventListener('click',()=>saveFishbonePng().catch(err=>showError(err?.message||String(err))));
-    const projectFileInput=$('#projectFileInput');$('#openProjectButton').addEventListener('click',event=>{event.stopPropagation();projectFileInput.click()});projectFileInput.addEventListener('change',()=>{loadProjectFile(projectFileInput.files?.[0]);projectFileInput.value='' });$('#saveProjectButton').addEventListener('click',saveProject);$('#saveProjectReportButton').addEventListener('click',saveProject);$('#restoreSessionButton').addEventListener('click',()=>{if(cachedRecoverySnapshot)applyProjectSnapshot(cachedRecoverySnapshot,{fromRecovery:true})});$('#exportReportButton').addEventListener('click',exportReport);
+    const projectFileInput=$('#projectFileInput');$('#openProjectButton').addEventListener('click',event=>{event.stopPropagation();projectFileInput.click()});projectFileInput.addEventListener('change',()=>{loadProjectFile(projectFileInput.files?.[0]);projectFileInput.value='' });$('#saveProjectButton').addEventListener('click',saveProject);$('#saveProjectReportButton').addEventListener('click',saveProject);$('#restoreSessionButton').addEventListener('click',()=>{if(cachedRecoverySnapshot)applyProjectSnapshot(cachedRecoverySnapshot,{fromRecovery:true})});$('#exportReportButton').addEventListener('click',exportReport);$('#projectFilenameInput').addEventListener('input',scheduleRecoverySave);
     document.addEventListener('input',event=>{if(dataset&&(event.target.closest('#fishboneEditor')||event.target.closest('#analysisSettings')))scheduleRecoverySave()});document.addEventListener('change',event=>{if(dataset&&(event.target.closest('#fishboneEditor')||event.target.closest('#analysisSettings')))scheduleRecoverySave()});
     $('#versionBadge').textContent=`v${APP_CONFIG.version}`;$('#footerVersion').textContent=APP_CONFIG.version;applyLanguage();checkRecovery();
     window.QCWorkbenchDebug={getDataset:()=>dataset,build:BUILD_MANIFEST};

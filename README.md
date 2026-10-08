@@ -45,7 +45,7 @@ Use **Sample data** if you want to try the analysis flow immediately. The built-
 
 1. Download or clone this repository.
 2. Double-click `build-standalone.bat`, or run `./build-standalone.ps1` from PowerShell.
-3. The builder generates and verifies `dist/index.html` and `dist/index.self-extract.html`.
+3. The builder generates and verifies `dist/index.html`, `dist/index.self-extract.html`, and an identical repository-root `qc-workbench.html` copy.
 4. Copy the generated HTML file wherever you need it.
 
 The current app has no bundled third-party runtime dependencies, so there are no library packages to download for the default build. Python, Node.js, and a local web server are not required for the production build. The builder uses PowerShell and the Windows `tar.exe` command provided by the template toolchain.
@@ -92,7 +92,7 @@ Cause items can be organized up to three levels deep. The app does not generate 
 
 ### Project files and recovery
 
-`Save project` exports a `.qcw.json` snapshot containing the current dataset and analysis state. Use `Open project` to continue later.
+`Save project` exports a `.qcw.json` snapshot containing the current dataset and analysis state. In **Report**, edit **Project filename** before saving; the app keeps the `.qcw.json` extension and removes unsafe filename characters. The name is remembered in project/recovery snapshots. Use `Open project` to continue later. Invalid project files are rejected before replacing current work. Choosing a different source or changing import settings resets analyses; save a project first when you need the existing work.
 
 The app also stores a local recovery snapshot in IndexedDB when the browser supports it. On a later visit, **Resume previous work** is offered instead of restoring the session silently. Browser storage can be cleared by the browser or operating system, so `.qcw.json` is the reliable backup format.
 
@@ -165,7 +165,7 @@ For use with the network completely disconnected, open the generated `dist/index
 - Automatic column-type detection is heuristic. Review the detected type before relying on an analysis and override it when necessary.
 - X̄-R requires constant subgroup sizes from 2 to 10. np charts require constant sample size. c charts assume a constant inspection opportunity / unit.
 - Control limits describe variation in the observed process data; they are not product specification limits.
-- Cp/Cpk, Pp/Ppk, CUSUM, EWMA, Gage R&R, DOE, ANOVA, and other advanced statistical methods are not part of v1.0.0.
+- Cp/Cpk, Pp/Ppk, CUSUM, EWMA, Gage R&R, DOE, ANOVA, and other advanced statistical methods are not part of v1.0.1.
 - Browser memory limits still apply. Very large datasets, many stratification groups, or charts with many points can consume substantial memory and rendering time.
 - Text labels are thinned on very large charts to keep the SVG readable and responsive; statistical calculations continue to use all valid observations.
 - IndexedDB recovery is convenience storage, not a permanent backup. Export a `.qcw.json` project when the work needs to be retained.
@@ -173,7 +173,7 @@ For use with the network completely disconnected, open the generated `dist/index
 
 ## Dependencies
 
-QC Workbench v1.0.0 has **no bundled third-party runtime library dependencies**. It uses standard browser APIs and system fonts directly.
+QC Workbench v1.0.1 has **no bundled third-party runtime library dependencies**. It uses standard browser APIs and system fonts directly.
 
 See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for repository notices and the policy for adding future dependencies.
 
@@ -186,3 +186,9 @@ Bug reports and feature proposals are welcome through GitHub Issues. See [CONTRI
 Copyright © 2026 ttomohisa
 
 Licensed under the [MIT License](LICENSE).
+
+### PR previews and regression checks
+
+Same-repository pull requests run `npm test`, build the standalone variants, and deploy a Cloudflare preview using the standard template workflow. PR-close cleanup removes that preview. Existing repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are required; a missing configuration produces a workflow notice rather than a preview URL. No production deployment is performed by these PR workflows.
+
+The numerical regression fixtures in `tests/fixtures/` are synthetic. They check existing formulas against independent reference values; control limits are not specification limits or a compliance determination.

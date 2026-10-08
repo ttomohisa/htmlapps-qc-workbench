@@ -54,3 +54,9 @@ Before adding or upgrading a package:
 - Refresh the selected lock entry with the dependency scripts; never hand-edit a lock hash to bypass a mismatch.
 - Rebuild with a clean cache.
 - Test with the network disabled.
+
+## Local project import and filenames
+
+Project files are untrusted JSON. The application validates dataset/analysis/fishbone structures before replacing the active workspace. This is structural validation, not a certification of statistical suitability. Data is still processed locally. User-edited project names are sanitized to a basename with a fixed `.qcw.json` extension and are only passed to the browser download attribute.
+
+PR previews use the existing template secret names and same-repository pull-request guard. No credentials are embedded in generated HTML, and no new account access is created by the app.

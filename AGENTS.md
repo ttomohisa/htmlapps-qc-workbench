@@ -229,3 +229,9 @@ Do not claim a browser, device, build, or network test was performed unless it w
 ## WebRTC application-ready rule
 
 For WebRTC DataChannel apps, never treat raw `RTCPeerConnection.connectionState === 'connected'` as application-ready. Use the reusable component's `onConnected`. When `createDefaultChannel:false`, set `readyChannelLabel` to a reliable control channel.
+
+## QC Workbench build additions
+
+- Preserve the `__QC_CORE_JS__` embedding when updating the shared builder.
+- The default build must generate root `qc-workbench.html` byte-for-byte identical to `dist/index.html`; never edit either generated copy manually.
+- Run `npm test` alongside the PowerShell checks. Numerical changes need independent reference oracles; do not equate software regression tests with regulatory compliance.

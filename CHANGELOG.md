@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.1 — 2026-10-08
+
+- Prevent stale file/project reads and errors from replacing newer input; retain original bytes for encoding changes.
+- Snapshot PNG geometry and filename before image decoding; cancel obsolete downloads after source replacement.
+- Validate project structure before replacing current work while retaining valid schema-v1 backups.
+- Add editable, sanitized project backup filenames and persist them with saved work.
+- Replace native project confirmation with the accessible shared dialog; improve header language labels, narrow-screen version visibility, and scrollable help.
+- Adopt current template root-HTML generation, checked PR builds, and standard Cloudflare preview/cleanup workflows.
+- Add deterministic input-race, project safety, packaging, and independent numerical regression tests without changing QC formulas.
+
 ## v1.0.0 - 2026-09-18
 
 - Promoted QC Workbench to the first stable release.

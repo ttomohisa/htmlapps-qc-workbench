@@ -124,7 +124,7 @@ foreach ($token in @("bytesAsync", "blobUrlAsync", "window.AppToast", "CORE.crea
 }
 
 $builderText = Get-Content -Raw -Encoding UTF8 (Join-Path $Root "build-standalone.ps1")
-foreach ($token in @("compressionSetting", "Compress-GzipBytes", "build-size-report.json", "sizeBudget", "DependencyLockPath", "tarballSha256", "__EMBEDDED_ASSET_BUNDLE_JSON__", "AppIconPath", "__APP_ICON_DATA_URI__")) {
+foreach ($token in @("compressionSetting", "Compress-GzipBytes", "build-size-report.json", "sizeBudget", "DependencyLockPath", "tarballSha256", "__EMBEDDED_ASSET_BUNDLE_JSON__", "AppIconPath", "__APP_ICON_DATA_URI__", "rootHtmlOutputPath", 'StartsWith("htmlapps-"')) {
   if (-not $builderText.Contains($token)) { throw "build-standalone.ps1 is missing required asset pipeline marker: $token" }
 }
 if ($builderText.Contains("__EMBEDDED_ASSET_BUNDLE_BASE64__")) { throw "build-standalone.ps1 must not wrap the full asset bundle in Base64." }
@@ -233,6 +233,55 @@ $buildArguments = @{}
 if ($ForceDownload) { $buildArguments.ForceDownload = $true }
 & (Join-Path $Root "build-standalone.ps1") @buildArguments
 
+$repositoryName = [string]$app.repository.name
+if ([string]::IsNullOrWhiteSpace($repositoryName)) { throw "app.config.json: repository.name is required" }
+$rootHtmlBaseName = $repositoryName
+if ($rootHtmlBaseName.StartsWith("htmlapps-", [System.StringComparison]::OrdinalIgnoreCase)) {
+  $rootHtmlBaseName = $rootHtmlBaseName.Substring("htmlapps-".Length)
+}
+if ([string]::IsNullOrWhiteSpace($rootHtmlBaseName) -or $rootHtmlBaseName -in @(".", "..")) {
+  throw "app.config.json: repository.name does not produce a valid repository-root HTML filename"
+}
+$rootHtmlPath = Join-Path $Root ($rootHtmlBaseName + ".html")
+if (-not (Test-Path -LiteralPath $rootHtmlPath -PathType Leaf)) {
+  throw "Repository-root HTML was not generated: $rootHtmlPath"
+}
+
+$configuredOutput = [string]$app.build.output
+$readableOutputPath = if ([System.IO.Path]::IsPathRooted($configuredOutput)) {
+  $configuredOutput
+} else {
+  Join-Path $Root $configuredOutput
+}
+if (-not (Test-Path -LiteralPath $readableOutputPath -PathType Leaf)) {
+  throw "Readable standalone HTML was not generated: $readableOutputPath"
+}
+
+$rootHtmlHash = $null
+$readableOutputHash = $null
+foreach ($hashTarget in @(
+  @{ Name = "root"; Path = $rootHtmlPath },
+  @{ Name = "readable"; Path = $readableOutputPath }
+)) {
+  $hashStream = [System.IO.File]::OpenRead([string]$hashTarget.Path)
+  $hashAlgorithm = [System.Security.Cryptography.SHA256]::Create()
+  try {
+    $hashValue = (($hashAlgorithm.ComputeHash($hashStream) | ForEach-Object { $_.ToString("x2") }) -join "")
+  } finally {
+    $hashAlgorithm.Dispose()
+    $hashStream.Dispose()
+  }
+  if ([string]$hashTarget.Name -eq "root") {
+    $rootHtmlHash = $hashValue
+  } else {
+    $readableOutputHash = $hashValue
+  }
+}
+if ($rootHtmlHash -ne $readableOutputHash) {
+  throw "Repository-root HTML must be an exact copy of the readable standalone HTML."
+}
+
+Write-Host "[OK] Repository-root HTML matches the readable standalone build: $rootHtmlPath" -ForegroundColor Green
 Write-Host "[OK] Repository check passed." -ForegroundColor Green
 
 # WebRTC readiness DataChannel regression

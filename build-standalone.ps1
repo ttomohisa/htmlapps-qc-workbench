@@ -194,10 +194,32 @@ $appIconDataUri = "data:image/svg+xml;base64," + [Convert]::ToBase64String($appI
 $appConfig = Get-Json $AppConfigPath
 $dependencyConfig = Get-Json $DependenciesPath
 $dependencyLock = Get-Json $DependencyLockPath
+$rootHtmlOutputPath = ""
+$rootHtmlOutputName = ""
 if (-not $OutputPathWasSpecified) {
   $configuredOutput = [string]$appConfig.build.output
   if ([string]::IsNullOrWhiteSpace($configuredOutput)) { $configuredOutput = "dist/index.html" }
   $OutputPath = if ([System.IO.Path]::IsPathRooted($configuredOutput)) { $configuredOutput } else { Join-Path $Root $configuredOutput }
+
+  $repositoryName = [string]$appConfig.repository.name
+  if ([string]::IsNullOrWhiteSpace($repositoryName)) {
+    throw "app.config.json: repository.name is required to generate the repository-root HTML copy."
+  }
+
+  $rootHtmlBaseName = $repositoryName
+  if ($rootHtmlBaseName.StartsWith("htmlapps-", [System.StringComparison]::OrdinalIgnoreCase)) {
+    $rootHtmlBaseName = $rootHtmlBaseName.Substring("htmlapps-".Length)
+  }
+
+  if ([string]::IsNullOrWhiteSpace($rootHtmlBaseName) -or $rootHtmlBaseName -in @(".", "..")) {
+    throw "app.config.json: repository.name does not produce a valid repository-root HTML filename."
+  }
+  if ($rootHtmlBaseName.IndexOfAny([System.IO.Path]::GetInvalidFileNameChars()) -ge 0) {
+    throw "app.config.json: repository.name contains characters that cannot be used in the repository-root HTML filename."
+  }
+
+  $rootHtmlOutputName = $rootHtmlBaseName + ".html"
+  $rootHtmlOutputPath = Join-Path $Root $rootHtmlOutputName
 }
 if (-not $dependencyConfig.dependencies) { $dependencies = @() } else { $dependencies = @($dependencyConfig.dependencies) }
 if (-not ($dependencyLock.PSObject.Properties.Name -contains "schemaVersion") -or [int]$dependencyLock.schemaVersion -ne 1) {
@@ -367,6 +389,10 @@ New-Item -ItemType Directory -Force -Path $outputDirectory | Out-Null
   -RequireNetworkBlock ([bool]$appConfig.build.blockRuntimeNetwork) `
   -ForbiddenPlaceholders @($replacements.Keys)
 
+if (-not [string]::IsNullOrWhiteSpace($rootHtmlOutputPath)) {
+  [System.IO.File]::Copy($OutputPath, $rootHtmlOutputPath, $true)
+}
+
 $selfExtractEnabled = $false
 $selfExtractOutputPath = ""
 if (-not $SkipSelfExtract -and ($appConfig.build.PSObject.Properties.Name -contains "selfExtract")) {
@@ -458,6 +484,9 @@ $outputHash = Get-Sha256FileHex $OutputPath
 $outputSizeMb = [Math]::Round($readableBytes / 1MB, 2)
 Write-Host ""
 Write-Host "[OK] Standalone HTML: $OutputPath" -ForegroundColor Green
+if (-not [string]::IsNullOrWhiteSpace($rootHtmlOutputPath)) {
+  Write-Host "[OK] Repository-root HTML: $rootHtmlOutputPath" -ForegroundColor Green
+}
 Write-Host "[OK] Size: $outputSizeMb MB"
 Write-Host "[OK] SHA-256: $outputHash"
 Write-Host "[OK] Fetch/XHR/WebSocket-style runtime network access is blocked by CSP."
