@@ -34,15 +34,23 @@ test('template build produces and verifies the root HTML artifact',()=>{
  assert.match(read('scripts/check-repository.ps1'),/Repository-root HTML must be an exact copy/);
  assert.match(read('.github/workflows/build-standalone.yml'),/npm test/);
 });
-test('standard Cloudflare preview uses same-repo guards and paired cleanup',()=>{
- for(const file of ['preview.yml','preview-cleanup.yml']) {
-  const source=read('.github/workflows/'+file);
-  assert.match(source,/head.repo.full_name == github.repository/);
-  assert.match(source,/CLOUDFLARE_API_TOKEN/);assert.match(source,/CLOUDFLARE_ACCOUNT_ID/);
-  assert.match(source,/WRANGLER_VERSION: "4\.135\.0"/);
- }
- assert.match(read('.github/workflows/preview.yml'),/npm test/);
- assert.match(read('.github/workflows/preview-cleanup.yml'),/closed/);
+test('Cloudflare preview isolates PR code from credentials and keeps paired cleanup',()=>{
+ const build=read('.github/workflows/preview.yml');
+ const deploy=read('.github/workflows/preview-deploy.yml');
+ const cleanup=read('.github/workflows/preview-cleanup.yml');
+ assert.match(build,/head.repo.full_name == github.repository/);
+ assert.match(build,/npm test/);
+ assert.doesNotMatch(build,/secrets\.|pull-requests: write/);
+ assert.match(deploy,/workflow_run:/);
+ assert.match(deploy,/CLOUDFLARE_API_TOKEN/);
+ assert.match(deploy,/CLOUDFLARE_ACCOUNT_ID/);
+ assert.match(deploy,/needs\.deploy\.outputs\.preview_url/);
+ assert.match(cleanup,/pull_request_target:/);
+ assert.match(cleanup,/closed/);
+ assert.match(cleanup,/ref: \$\{\{ github\.workflow_sha \}\}/);
+ assert.doesNotMatch(cleanup,/ref: .*pull_request\.head/);
+ assert.match(read('.github/scripts/preview-command.cjs'),/preview-control/);
+ assert.match(deploy,/wrangler@4\.135\.0/);
  assert.equal(JSON.parse(read('wrangler.preview.jsonc')).assets.directory,'./dist');
 });
 
